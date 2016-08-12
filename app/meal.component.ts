@@ -6,7 +6,7 @@ import { Meal } from './meal.model';
     inputs: ['meal'],
   template: `
     <div>
-      <label>{{ meal.name }}</label>
+      <label>{{ meal.name }} on {{meal.date}}</label>
     </div>
   `
 })
