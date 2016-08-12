@@ -21,8 +21,10 @@ import { DatePipe } from './meals-by-date.pipe';
       <option value="high">Show High Calorie Items</option>
     </select>
 
+
     <label>Filter by meal date: </label>
     <input (change)="onDateChange($event.target.value)" type="date">
+    <button (click)="onDateChange('')">View All Dates</button>
 
     <meal-header [mealDate]="dateFilter"></meal-header>
 
