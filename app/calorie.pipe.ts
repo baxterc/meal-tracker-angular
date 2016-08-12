@@ -13,11 +13,11 @@ export class CaloriePipe implements PipeTransform {
       return input;
     } else if (calorieThreshold === "low"){
       return input.filter(function(meal){
-        return meal.calories <= 500;
+        return parseInt(meal.calories) <= 500;
       });
     } else if (calorieThreshold === "high"){
       return input.filter(function(meal){
-        return meal.calories > 500;
+        return parseInt(meal.calories) > 500;
       });
     } else {
       return input;

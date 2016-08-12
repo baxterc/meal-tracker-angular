@@ -5,7 +5,7 @@ import { Meal } from './meal.model';
   selector: 'meal-header',
   inputs: ['mealDate'],
   template: `
-  <h4 *ngIf="!mealDate">Viewing all-time meals</h4>
+  <h4 *ngIf="!mealDate">Viewing all meals from all days...</h4>
   <h4 *ngIf="mealDate">Meals for {{mealDate}}</h4>
   `
 
