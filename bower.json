@@ -1,12 +1,12 @@
 {
-  "name": "angular2-skeleton-app",
+  "name": "meal-tracker",
   "description": "",
   "main": "",
   "authors": [
     "Charlie Baxter <charlie.r.baxter@gmail.com>"
   ],
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://github.com/baxterc/angular-js-template",
   "ignore": [
     "**/.*",
     "node_modules",
