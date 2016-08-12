@@ -21,17 +21,23 @@ import { DatePipe } from './meals-by-date.pipe';
       <option value="high">Show High Calorie Items</option>
     </select>
 
-
     <label>Filter by meal date: </label>
     <input (change)="onDateChange($event.target.value)" type="date">
     <button (click)="onDateChange('')">View All Dates</button>
 
     <meal-header [mealDate]="dateFilter"></meal-header>
 
-    <meal-display *ngFor="#currentMeal of mealList | calorie:calorieFilter | mealDate:dateFilter" [meal] = "currentMeal" (click)="editMeal(currentMeal)"> </meal-display>
+    <meal-display *ngFor="#currentMeal of mealList | calorie:calorieFilter | mealDate:dateFilter"
 
-    <calorie-average-display [dailyMeals]="mealCount" [dailyCalories]="dailyCalorieCount"></calorie-average-display>
+      (click)="mealClicked(currentMeal)"
+      [class.selected]="currentMeal === selectedMeal"
+      [meal] = "currentMeal">
+    </meal-display>
+
+    <calorie-average-display [dailyMeals]="mealCount" [calorieCount]="dailyCalorieCount"></calorie-average-display>
     <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal>
+    <button *ngIf="selectedMeal" (click)="closeEdit()">Close Edit</button>
+
     <add-meal (onSubmitNewMeal) = "createMeal($event[0], $event[1], $event[2], $event[3])"></add-meal>
   `
 })
@@ -45,27 +51,31 @@ export class MealListComponent {
   public dailyCalorieCount: number = 0;
   constructor() {
     this.onSelectedMeal = new EventEmitter();
+  }
 
+  mealClicked(clickedMeal: Meal): void{
+    this.selectedMeal = clickedMeal;
+    this.onSelectedMeal.emit(clickedMeal);
   }
 
   createMeal(name: string, description: string, calories: string, date: string) {
     this.mealList.push(
       new Meal(name, description, calories, date)
     );
-    console.log(this.dateFilter);
+    this.selectedMeal = null;
     if (this.dateFilter === date || !this.dateFilter){
       this.mealCount += 1;
       this.dailyCalorieCount += parseInt(calories);
-      console.log(this.mealCount);
-      console.log(this.dailyCalorieCount);
-      console.log(this.mealList);
     }
-
   }
 
   editMeal(clickedMeal: Meal): void {
     this.selectedMeal = clickedMeal;
     this.onSelectedMeal.emit(clickedMeal);
+    for (var i = 0; i < (this.mealList.length); i++) {
+      this.mealCount ++
+      this.dailyCalorieCount += parseInt(this.mealList[i].calories);
+    }
   }
 
   onCalorieChange(filterOption) {
@@ -82,5 +92,9 @@ export class MealListComponent {
         this.dailyCalorieCount += parseInt(this.mealList[i].calories);
       }
     }
+  }
+
+  closeEdit(){
+    this.selectedMeal = null;
   }
 }
