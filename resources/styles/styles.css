@@ -1,8 +1,29 @@
-h1 {
-  color: blue;
+body {
+  background: #8ECDCD
 }
-
+h1 {
+  font-family: 'Candal', sans-serif;
+  color: #38368C;
+  font-size: 4.0em;
+  border-bottom: 2px solid grey;
+  text-align: center;
+}
+h4 {
+  padding-bottom: 18px;
+}
+p {
+  font-size: 1.2em;
+}
+input {
+  background: #EDFBFB
+}
+.input-lg {
+  background: #EDFBFB
+}
+.meal {
+  padding-bottom: 18px;
+}
 .selected {
-  color: green;
+  color: #38368C;
   font-size: 1.5em;
 }

@@ -8,8 +8,8 @@ import {Meal} from './meal.model';
   <div *ngIf="!dailyMeals || !calorieCount"> <p>No calorie information has been entered.</p> </div>
 
   <div *ngIf="dailyMeals && calorieCount">
-  <p>Total calories: {{calorieCount}}</p>
-  <p>Average calories for your meal items: {{calorieCount / dailyMeals}}.</p>
+  <p><b>Total calories: {{calorieCount}}</b></p>
+  <p><b>Average calories for your meal items: {{calorieCount / dailyMeals}}.</b></p>
   </div>
 
   `

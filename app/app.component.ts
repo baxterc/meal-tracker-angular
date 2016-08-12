@@ -7,7 +7,7 @@ import { MealListComponent } from './meal-list.component';
   directives: [MealListComponent],
   template: `
     <div class="container">
-      <h1>Meal Tracker</h1>
+      <h1>Nom Nom</h1>
       <meal-list [mealList]="meals"></meal-list>
     </div>
   `
@@ -19,6 +19,7 @@ export class AppComponent {
       new Meal("Coffee", "Had it with some cream.", "100", "2016-08-12"),
       new Meal("Toast", "Two slices with a little butter.", "200", "2016-08-12"),
       new Meal("Banana", "Overripe.", "100", "2016-08-12"),
+      new Meal("Bacon", "Worth it!", "600", "2016-08-12")
     ];
   }
 }
