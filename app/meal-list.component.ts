@@ -87,7 +87,10 @@ export class MealListComponent {
     this.mealCount = 0;
     this.dailyCalorieCount = 0;
     for (var i = 0; i < (this.mealList.length); i++) {
-      if (this.mealList[i].date === filterOption) {
+      if (!filterOption) {
+        this.mealCount ++
+        this.dailyCalorieCount += parseInt(this.mealList[i].calories);
+      } else if (this.mealList[i].date === filterOption) {
         this.mealCount ++
         this.dailyCalorieCount += parseInt(this.mealList[i].calories);
       }
